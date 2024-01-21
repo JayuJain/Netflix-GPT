@@ -2,7 +2,7 @@ import React from 'react';
 import MovieCard from "./MovieCard";
 
 const MovieList = ({ title, movies }) => {
-  if(!movies) return
+  if (!movies) return null;
   // console.log(movies);
   return (
     <div className='px-6'>
