@@ -48,7 +48,7 @@ const Header = () => {
 
   return (
     
-    <div className={ ` flex justify-between  absolute ${user ? 'w-screen bg-gradient-to-b from-black' : 'bg-black  bg-opacity-60 pr-[1260px] pb-[750px]'} `} >
+    <div className={ ` flex justify-between  absolute ${user ? 'w-[100%] bg-gradient-to-b from-black' : 'bg-black  bg-opacity-60 pr-[1260px] pb-[750px]'} `} >
       <img className={`${user ? 'w-40 py-2' : 'w-56 mx-5 py-2'}`} src={LOGO} alt="Logo" />
       {user && <div className='flex m-6 '>
       <p className='text-black  text-lg'>{user.displayName }</p>
