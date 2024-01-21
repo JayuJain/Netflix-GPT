@@ -8,8 +8,12 @@ import useTopRatedMovies from '../hooks/useTopRatedMovies';
 import useUpComingMovies from '../hooks/useUpComingMovies';
 import { useSelector } from 'react-redux';
 import GptSearchPage from './GptSearchPage';
+import VideoBackground from './VideoBackground';
+import VideoTitle from './VideoTitle';
 const Browse = () => {
   const showGptPage = useSelector(store => store.gpt.showGptPage);
+  const showMovie = useSelector(store => store.movies.showMovie);
+  const showMovieData = useSelector(store => store.movies.showMovieData)
   useNowPlayingMovies();
   usePopularMovies();
   useTopRatedMovies();
@@ -17,8 +21,13 @@ const Browse = () => {
   return (
     <div >
       <Header />
-      {showGptPage === true ? <GptSearchPage /> :
-        
+      {showGptPage === true && showMovie ===false ? <GptSearchPage /> :
+        (showMovie === true && showGptPage === true) || (showMovie === true && showGptPage === false) ?
+          <div className=' mt-[10%] md:mt-[-12%]'>
+            <VideoTitle title={showMovieData.title} overview={showMovieData.overview} />
+            <VideoBackground trailerId={showMovieData.id} />
+          </div>
+           : 
         <div>
 <MainContainer />
       <SecondaryContainer/>
