@@ -73,9 +73,9 @@ const Login = () => {
   return (
       <div >
           
-          <img  className='absolute' src={LOGIN_BG} alt="NetFlix BackGround" />
+          <img  className='absolute h-screen object-cover md:w-screen' src={LOGIN_BG} alt="NetFlix BackGround" />
           <Header />
-          <form onSubmit={(e)=> e.preventDefault()} className='absolute w-3/12 px-12 pt-12 pb-20 my-20 right-0 left-0 mx-auto  bg-black bg-opacity-70'>
+          <form onSubmit={(e)=> e.preventDefault()} className='absolute w-full md:w-3/12 px-12 pt-12 pb-20 my-20 right-0 left-0 mx-auto  bg-black bg-opacity-70'>
               <h1 className='text-white py-6 text-4xl font-bold'>{isSignInOpen ? "Sign In" : "Sign Up"}</h1>
               {!isSignInOpen && <input ref={name} type="text" placeholder='Full Name' className='w-full text-[#8c8c8c] rounded-md bg-[#333]  my-4 pl-4 py-4 ' />}
               <input type="text" ref={email} placeholder='Email Address' className='w-full text-[#8c8c8c] rounded-md bg-[#333]  my-4 pl-4 py-4 ' />

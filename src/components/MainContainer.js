@@ -12,7 +12,7 @@ const MainContainer = () => {
   const { title, overview,id } = movies[0];
     // console.log(movies);
   return (
-      <div className='mt-[-12%]' >
+      <div className=' mt-[10%] md:mt-[-12%]' >
       <VideoTitle title={title} overview={overview} />
       <VideoBackground trailerId={id} />
     </div>

@@ -16,6 +16,5 @@ export const IMG_CDN_URL = "https://image.tmdb.org/t/p/w500";
 
 export const SUPPORTED_LANGUAGE = [{ identifier: "en", name: "English" }, { identifier: "hindi", name: "Hindi" }, { identifier: "spanish", name: "Spanish" }]
 
-// export const OPENAI_KEY = "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";
 
 export const  OPENAI_KEY = process.env.REACT_APP_OPENAI_KEY;

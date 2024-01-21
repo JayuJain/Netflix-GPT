@@ -5,14 +5,15 @@ import { LOGIN_BG } from '../utils/constants';
 
 const GptSearchPage = () => {
   return (
-      <div >
-          <div className='fixed -z-10'>
-          <img src={LOGIN_BG} alt="NetFlix BackGround" />
+    <>
+     <div className='fixed -z-10'>
+          <img className='h-screen object-cover md:w-screen'  src={LOGIN_BG} alt="NetFlix BackGround" />
           </div>
-          
+      <div > 
           <GptSearchBar />
           <GptMovieSuggestions />
-    </div>
+      </div>
+      </>
   )
 }
 
