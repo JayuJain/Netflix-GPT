@@ -4,13 +4,16 @@ import { auth } from '../utils/firebase';
 import { useDispatch, useSelector } from 'react-redux';
 import { addUser, removeUser } from '../utils/userSlice';
 import { useNavigate } from 'react-router-dom';
-import { LOGO } from '../utils/constants';
+import { LOGO, SUPPORTED_LANGUAGE } from '../utils/constants';
+import { toggleGptPage } from '../utils/gptSlice';
+import { changeLang } from '../utils/configSlice';
 
 
 const Header = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const showGptPage = useSelector(store => store.gpt.showGptPage)
 
   const user = useSelector(store => store.user);
   // console.log(user);
@@ -46,12 +49,24 @@ const Header = () => {
     });
   }
 
+  const handleGptClick = () => {
+    dispatch(toggleGptPage());
+  }
+
+  const handleLang = (e) => {
+    dispatch(changeLang(e.target.value));
+  }
+
   return (
     
-    <div className={ ` flex justify-between absolute  ${user ? 'w-[100%] z-10 relative bg-gradient-to-b from-black' : 'bg-black  bg-opacity-60 pr-[1260px] pb-[750px]'} `} >
+    <div className={ ` flex justify-between absolute  ${user ? ( showGptPage ? 'w-[100%] z-10 absolute bg-gradient-to-b from-black' : 'w-[100%] z-10 relative bg-gradient-to-b from-black' ): 'bg-black  bg-opacity-60 pr-[1260px] pb-[750px]'} `} >
       <img className={`${user ? 'w-40 py-2' : 'w-56 mx-5 py-2'}`} src={LOGO} alt="Logo" />
       {user && <div className='flex m-6 '>
-      {/* <p className='text-black  text-lg'>{user.displayName }</p> */}
+       {showGptPage && <select onChange={handleLang} className='cursor-pointer bg-gray-600 text-white py-2 px-2 mx-4' >
+          {SUPPORTED_LANGUAGE.map((lang) => <option  key={lang.identifier} value={lang.identifier}>{lang.name}</option>)}
+
+        </select>}
+        <button className='px-4 bg-purple-500 text-white rounded-lg' onClick={handleGptClick}>{showGptPage ? "Home Page" : "Gpt Search"}</button>
         <img className='w-8 h-8 rounded-lg mx-4' src={user.photoURL} alt="" />
         <button className='h-8 px-2   bg-[#c11119] text-white  font-bold rounded-lg' onClick={handleClick}>Sign Out</button>
        

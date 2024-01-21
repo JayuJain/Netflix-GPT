@@ -25,13 +25,14 @@ const Login = () => {
     
     if (!isSignInOpen) {
     createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
-  .then((userCredential) => {
+    .then((userCredential) => {
     // Signed up 
     const user = userCredential.user;
     updateProfile(user, {
-      displayName: name.current.value , photoURL:{USER_ICON}
+      displayName: name.current.value , photoURL:USER_ICON
     }).then(() => {
       const { uid, email, displayName, photoURL } = user;
+      console.log(displayName);
       dispatch(addUser({ uid: uid, displayName: displayName, email: email, photoURL: photoURL }))
 
       // navigate("/browse");
