@@ -72,7 +72,7 @@ const Login = () => {
   return (
       <div >
           
-          <img  className='absolute ' src={LOGIN_BG} alt="NetFlix BackGround" />
+          <img  className='absolute' src={LOGIN_BG} alt="NetFlix BackGround" />
           <Header />
           <form onSubmit={(e)=> e.preventDefault()} className='absolute w-3/12 px-12 pt-12 pb-20 my-20 right-0 left-0 mx-auto  bg-black bg-opacity-70'>
               <h1 className='text-white py-6 text-4xl font-bold'>{isSignInOpen ? "Sign In" : "Sign Up"}</h1>
